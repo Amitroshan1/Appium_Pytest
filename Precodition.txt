@@ -1,0 +1,6 @@
+There are some pre conditions for running this code.
+
+1.- Device should be on Sim Card
+2.- Screen recording and log should be On before adding the device for Automation.
+3.- Once code started there should be no interuption manually on Dut or laptop
+4.- Google Message should be on Screen.
