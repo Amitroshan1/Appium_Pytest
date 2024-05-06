@@ -10,12 +10,12 @@ from pageObject.Video_call_Locators import video_call_Locator
 
 
 class Test_call_msg:
-    number="+919653184217"
+    number="+919315227062"
     start_x = 604
     start_y = 963
     end_x = 604
     end_y = 494
-    repeat=3
+    repeat=50
     def test_make_video_call(self,setup,setup2):
         self.driver=setup
         self.driver2=setup2
@@ -39,11 +39,16 @@ class Test_call_msg:
                     self.driver.find_element(AppiumBy.XPATH, self.obj.video_call_btn_number).click()
                 except Exception:
                     print("Both video call buttons are not present")
+                    continue
             sleep(7)
+            print("waiting to tap")
             self.obj.Recieve_call()
+            self.obj.Recieve_call()
+
             try:
                 wait_for_call.until(EC.visibility_of_element_located((AppiumBy.XPATH, self.obj.call_timer_xpath)))
                 print("timer is visible")
+                self.driver2.tap([(893, 494)])
                 try:
                     wait_for_call.until(EC.any_of(EC.presence_of_element_located((AppiumBy.XPATH,self.obj.recent_btn_xpath)),
                                                   EC.presence_of_element_located((AppiumBy.XPATH,self.obj.Audio_End_button))))
@@ -78,7 +83,8 @@ class Test_call_msg:
         print("Total Call Drop--->", Drop)
         print("Total Video to Audio switch--->",switch)
         self.driver.back()
-
+        self.driver.back()
+        self.driver.back()
 
 
 

@@ -15,7 +15,7 @@ class Test_audio_call:
         self.obj=audio_Call(self.driver,self.driver2)
         self.obj.open_phn_dialer()
         self.obj.click_dialpad()
-        self.obj.Enter_number('9653184217')
+        self.obj.Enter_number("+919315227062")
         wait_for_call = WebDriverWait(self.driver, 28)
         total = 0
         cnt = 0
@@ -31,8 +31,19 @@ class Test_audio_call:
                     self.driver.find_element(AppiumBy.XPATH, self.obj.Num_call_btn_xp).click()
                 except Exception:
                     print("Both video call buttons are not present")
+                    self.driver.find_element(AppiumBy.XPATH, self.obj.Audio_End_button).click()
             sleep(5)
-            self.obj.Recieve_call()
+            try:
+                print("waiting to tap")
+                self.obj.Recieve_call()
+                sleep(3)
+                self.obj.Recieve_call()
+            except Exception:
+                self.driver.find_element(AppiumBy.XPATH,self.obj.Audio_End_button).click()
+                continue
+
+
+
             try:
                 wait_for_call.until(EC.visibility_of_element_located((AppiumBy.XPATH, self.obj.call_timer_xpath)))
 
@@ -58,4 +69,8 @@ class Test_audio_call:
         print("Total Call Made--->",total)
         print("Total Call Drop--->",Drop)
         print("Total Test Call Pass-->",cnt)
+        self.driver.back()
+        self.driver.back()
+        self.driver.back()
+
 
