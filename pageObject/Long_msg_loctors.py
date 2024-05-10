@@ -18,17 +18,21 @@ class Long_msg:
 
     def open_Msg(self):
         self.driver.find_element(AppiumBy.XPATH,self.msg_xpath).click()
+        sleep(1)
 
     def compose_msg(self):
         self.driver.find_element(AppiumBy.XPATH,self.start_chat_Xpath).click()
+        sleep(1)
 
     def enter_number(self,number):
         self.driver.find_element(AppiumBy.XPATH,self.Search_contact_xpath).send_keys(number)
         sleep(2)
         self.driver.find_element(AppiumBy.XPATH,self.confirm_contact_xpath).click()
+        sleep(1)
 
     def type_Msg(self,msg):
         self.driver.find_element(AppiumBy.XPATH, self.text_area_xpath).clear()
+        sleep(1)
         self.driver.find_element(AppiumBy.XPATH,self.text_area_xpath).send_keys(msg)
         sleep(1)
 

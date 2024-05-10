@@ -1,4 +1,5 @@
 from appium.webdriver.common.appiumby import AppiumBy
+from time import sleep
 
 class audio_Call:
     phn_dialer_xpath = '//android.widget.TextView[@content-desc="Phone"]'
@@ -19,19 +20,25 @@ class audio_Call:
 
     def open_phn_dialer(self):
         self.driver.find_element(AppiumBy.XPATH,self.phn_dialer_xpath).click()
+        sleep(1)
         self.driver.find_element(AppiumBy.XPATH, self.recent_btn_xpath).click()
+        sleep(1)
 
     def click_dialpad(self):
         self.driver.find_element(AppiumBy.XPATH, self.keypad_xpath).click()
+        sleep(1)
 
 
     def Enter_number(self,number):
         self.driver.find_element(AppiumBy.XPATH, self.textarea_num_xpath).send_keys(number)
+        sleep(1)
 
     def make_call(self):
         self.driver.find_element(AppiumBy.XPATH, self.Call_btn_xpath).click()
+        sleep(1)
 
 
     def Recieve_call(self):
         self.driver2.tap([(893, 494)])
+        sleep(1)
 

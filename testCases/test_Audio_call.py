@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class Test_audio_call:
-    repeat=3
+    repeat=10
 
     def test_audio(self,setup,setup2):
         self.driver=setup
@@ -16,7 +16,7 @@ class Test_audio_call:
         self.obj.open_phn_dialer()
         self.obj.click_dialpad()
         self.obj.Enter_number("+919315227062")
-        wait_for_call = WebDriverWait(self.driver, 28)
+        wait_for_call = WebDriverWait(self.driver, 26)
         total = 0
         cnt = 0
         Drop = 0
@@ -31,7 +31,6 @@ class Test_audio_call:
                     self.driver.find_element(AppiumBy.XPATH, self.obj.Num_call_btn_xp).click()
                 except Exception:
                     print("Both video call buttons are not present")
-                    self.driver.find_element(AppiumBy.XPATH, self.obj.Audio_End_button).click()
             sleep(5)
             try:
                 print("waiting to tap")
@@ -46,6 +45,7 @@ class Test_audio_call:
 
             try:
                 wait_for_call.until(EC.visibility_of_element_located((AppiumBy.XPATH, self.obj.call_timer_xpath)))
+                print("timer is visible")
 
                 try:
                     wait_for_call.until(EC.presence_of_element_located((AppiumBy.XPATH,self.obj.recent_btn_xpath)))
@@ -57,6 +57,7 @@ class Test_audio_call:
                     cnt+=1
                     self.driver.find_element(AppiumBy.XPATH,self.obj.Audio_End_button).click()
                     print("Call was Successfull--->",cnt)
+                    sleep(1)
             except Exception:
                 print("Reciever end is not picking or switch Off or out of range")
                 if total == self.repeat:
@@ -69,7 +70,6 @@ class Test_audio_call:
         print("Total Call Made--->",total)
         print("Total Call Drop--->",Drop)
         print("Total Test Call Pass-->",cnt)
-        self.driver.back()
         self.driver.back()
         self.driver.back()
 

@@ -41,6 +41,7 @@ class Test_call_msg:
                     print("Both video call buttons are not present")
                     continue
             sleep(7)
+            total+=1
             print("waiting to tap")
             self.obj.Recieve_call()
             self.obj.Recieve_call()
@@ -48,7 +49,7 @@ class Test_call_msg:
             try:
                 wait_for_call.until(EC.visibility_of_element_located((AppiumBy.XPATH, self.obj.call_timer_xpath)))
                 print("timer is visible")
-                self.driver2.tap([(893, 494)])
+                self.driver.tap([(1122, 925)])
                 try:
                     wait_for_call.until(EC.any_of(EC.presence_of_element_located((AppiumBy.XPATH,self.obj.recent_btn_xpath)),
                                                   EC.presence_of_element_located((AppiumBy.XPATH,self.obj.Audio_End_button))))
@@ -83,8 +84,8 @@ class Test_call_msg:
         print("Total Call Drop--->", Drop)
         print("Total Video to Audio switch--->",switch)
         self.driver.back()
-        self.driver.back()
-        self.driver.back()
+
+
 
 
 

@@ -14,14 +14,13 @@ class video_call_Locator:
     Audio_End_button = '//android.widget.Button[@content-desc="End call"]'
     call_timer_xpath='//android.widget.Chronometer[@resource-id="com.google.android.dialer:id/contactgrid_bottom_timer"]'
     video_call_btn_number='//android.widget.ImageView[@resource-id="com.google.android.dialer:id/call_button"]'
-    x=893
-    y=494
+
 
 
     def __init__(self,driver,driver2):
         self.driver=driver
         self.driver2=driver2
-        self.repeat=3
+        self.repeat=4
 
 
     def Open_phn_dialer(self):
@@ -30,19 +29,23 @@ class video_call_Locator:
 
     def press_dial_pad(self):
         self.driver.find_element(AppiumBy.XPATH, self.recent_btn_xpath).click()
+        sleep(1)
         self.driver.find_element(AppiumBy.XPATH, self.keypad_xpath).click()
         sleep(1)
 
     def enterNumber(self,number):
         self.driver.find_element(AppiumBy.XPATH,self.textarea_num_xpath).send_keys(number)
+        sleep(1)
 
 
 
     def click_video_call(self,start_x,start_y,end_x,end_y ):
         self.driver.swipe(start_x, start_y, end_x, end_y)
+        sleep(1)
 
     def Recieve_call(self):
         self.driver2.tap([(893, 494)])
+        sleep(1)
 
 
 
