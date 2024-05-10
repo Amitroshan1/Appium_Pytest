@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6191c16e-616e-4f70-94c0-1df79af4ae29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pageObject/voWifi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testCases/test_setting.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testCases/test_try.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/log.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObject/Audio_call.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObject/Audio_call.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObject/Long_msg_loctors.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObject/Long_msg_loctors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObject/Video_call_Locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObject/Video_call_Locators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/test_Audio_call.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_Audio_call.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/test_Long_Msg.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_Long_Msg.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/test_videoMsg_call.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_videoMsg_call.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
