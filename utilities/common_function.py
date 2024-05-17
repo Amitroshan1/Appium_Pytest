@@ -7,6 +7,8 @@ class Common_methods:
     second_toggle = '(//android.widget.Switch[@resource-id="android:id/switch_widget"])[2]'
     third_toggle='(//android.widget.Switch[@resource-id="android:id/switch_widget"])[3]'
 
+
+
     def __init__(self,driver):
         self.driver=driver
 
@@ -53,10 +55,12 @@ class Common_methods:
             print("Now Toggle is On")
 
 
+
+    @staticmethod
     def swipe_DOWN(self):
         self.driver.swipe(998,2640,594,409)
         sleep(1)
-
+    @staticmethod
     def swipe_UP(self):
         self.driver.swipe(594,409,998,2640)
         sleep(1)

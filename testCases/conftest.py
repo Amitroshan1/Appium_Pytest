@@ -6,7 +6,7 @@ from time import sleep
 capabilities = dict(
     platformName='Android',
     automationName='uiautomator2',
-    udid='2b6d1798',
+    udid='8bc7c3ea',
     ignoreHiddenApiPolicyError = 'true',
     noReset = 'true'
       )

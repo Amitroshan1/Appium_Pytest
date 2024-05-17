@@ -57,14 +57,14 @@ class vo_wifi:
         toggle_state = toggle.get_attribute("checked")
         if toggle_state == 'true':
             toggle.click()
-            print("toggle is already Off Now")
+            print("toggle is  Off Now")
             sleep(50)
             toggle.click()
             sleep(1)
 
         else:
             sleep(50)
-            print("Toggle is already On")
+            print("Toggle is already Off")
 
     def check_1_toggle(self):
         toggle=self.driver.find_element(AppiumBy.XPATH,self.toggle_xp)

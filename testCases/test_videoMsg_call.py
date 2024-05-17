@@ -10,26 +10,26 @@ from pageObject.Video_call_Locators import video_call_Locator
 
 
 class Test_call_msg:
-    number="+919315227062"
+
     start_x = 604
     start_y = 963
     end_x = 604
     end_y = 494
-    repeat=50
+
     def test_make_video_call(self,setup,setup2):
         self.driver=setup
         self.driver2=setup2
         self.obj=video_call_Locator(self.driver,self.driver2)
         self.obj.Open_phn_dialer()
         self.obj.press_dial_pad()
-        self.obj.enterNumber(self.number)
+        self.obj.enterNumber()
         self.obj.click_video_call(self.start_x,self.start_y,self.end_x,self.end_y)
         wait_for_call = WebDriverWait(self.driver, 28)
         total=0
         cnt = 0
         Drop = 0
         switch=0
-        for i in range(self.repeat):
+        for i in range(self.obj.repeat):
             total+=1
             timestamp = datetime.now().strftime("%Y-%m-%d___%H:%M:%S")
             try:

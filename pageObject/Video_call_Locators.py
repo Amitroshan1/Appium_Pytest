@@ -4,6 +4,10 @@ from time import sleep
 
 
 class video_call_Locator:
+    number = "+919315227062"
+    repeat = 50
+
+
     phn_dialer_xpath='//android.widget.TextView[@content-desc="Phone"]'
     recent_btn_xpath='//android.view.View[@resource-id="com.google.android.dialer:id/navigation_bar_item_active_indicator_view"]'
     keypad_xpath='//android.widget.ImageButton[@content-desc="key pad"]'
@@ -33,8 +37,8 @@ class video_call_Locator:
         self.driver.find_element(AppiumBy.XPATH, self.keypad_xpath).click()
         sleep(1)
 
-    def enterNumber(self,number):
-        self.driver.find_element(AppiumBy.XPATH,self.textarea_num_xpath).send_keys(number)
+    def enterNumber(self):
+        self.driver.find_element(AppiumBy.XPATH,self.textarea_num_xpath).send_keys(self.number)
         sleep(1)
 
 

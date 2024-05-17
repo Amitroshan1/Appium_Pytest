@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class Test_audio_call:
     repeat=10
+    Number="+919315227062"
 
     def test_audio(self,setup,setup2):
         self.driver=setup
@@ -15,7 +16,7 @@ class Test_audio_call:
         self.obj=audio_Call(self.driver,self.driver2)
         self.obj.open_phn_dialer()
         self.obj.click_dialpad()
-        self.obj.Enter_number("+919315227062")
+        self.obj.Enter_number(self.Number)
         wait_for_call = WebDriverWait(self.driver, 26)
         total = 0
         cnt = 0

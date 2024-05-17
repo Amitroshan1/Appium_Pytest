@@ -60,44 +60,36 @@ class Test_setting:
         self.logger.info('********************************* test_simcard ****************************************')
         self.logger.info('********************************* Checking Sim card ****************************************')
 
-        try:
-            self.obj.Click_on_Sim2()
-            self.logger.info('********************************* checking SIM 2****************************************')
-            print("getting into SIM2")
-            self.obj.check_wifi_call()
-            self.obj.check_1_toggle()
-            self.obj.click_wifi_prefrence()
-            self.driver.back()
-            self.driver.back()
 
-            self.obj.click_on_Sim1()
-            self.logger.info('********************************* checking SIM 1 ****************************************')
-            print("getting into SIM1")
-            self.obj.check_wifi_call()
-            self.obj.check_1_toggle()
-            self.obj.click_wifi_prefrence()
-            self.driver.back()
-            self.driver.back()
+        try:
+            try:
+                if  self.driver.find_element(AppiumBy.XPATH,self.obj.Sim2).is_displayed():
+                    self.obj.Click_on_Sim2()
+                    self.logger.info('********************************* checking SIM 2****************************************')
+                    print("getting into SIM2")
+                    sleep(1)
+                    self.obj.check_wifi_call()
+                    self.obj.check_1_toggle()
+                    self.obj.click_wifi_prefrence()
+                    self.driver.back()
+                    self.driver.back()
+            except:
+                pass
+            try:
+                if  self.driver.find_element(AppiumBy.XPATH,self.obj.Sim1).is_displayed():
+                    self.obj.click_on_Sim1()
+                    self.logger.info('********************************* checking SIM 1 ****************************************')
+                    print("getting into SIM1")
+                    self.obj.check_wifi_call()
+                    self.obj.check_1_toggle()
+                    self.obj.click_wifi_prefrence()
+                    self.driver.back()
+                    self.driver.back()
+            except :
+                pass
 
         except Exception:
-            try:
-                if self.driver.find_element(AppiumBy.XPATH,self.obj.No_sim_card1_xp).is_displayed():
-                    self.obj.Click_on_Sim2()
-                    self.obj.check_wifi_call()
-                    self.obj.check_1_toggle()
-                    self.obj.click_wifi_prefrence()
-
-            except Exception:
-                if self.driver.find_element(AppiumBy.XPATH, self.obj.NO_sim_card2_xp).is_displayed():
-                    self.obj.click_on_Sim1()
-                    self.obj.check_wifi_call()
-                    self.obj.check_1_toggle()
-                    self.obj.click_wifi_prefrence()
-
-
-            finally:
-                self.driver.back()
-                self.driver.back()
+           print("NO Sim card i in there")
         finally:
             self.driver.back()
 
@@ -111,6 +103,7 @@ class Test_setting:
 
         self.obj.swipe_DOWN()
         self.obj.Click_about_device()
+
         try:
             if self.driver.find_element(AppiumBy.XPATH,self.obj.status_SIM1_XP).is_displayed():
                 try:
@@ -121,9 +114,9 @@ class Test_setting:
                         print("Sim 1 is successfully connected to VoWifi")
                 except Exception:
                     self.logger.critical('********************************* "Failed:-->Sim 1 is not connected to VoWifi" ****************************************')
-                    print("Failed:-->Sim 1 is not connected to VoWifi")
+                    print("Failed:-->Sim 1 is not connected to VoWifi even after waiting for 2 min")
         except Exception:
-            self.logger.warn('********************************* SIM 1 is Not Available ****************************************')
+            self.logger.warning('********************************* SIM 1 is Not Available ****************************************')
             print("SIM 1 is Not Available")
 
         self.obj.swipe_DOWN()
@@ -136,12 +129,13 @@ class Test_setting:
                         print("Sim 2 is successfully connected to VoWifi")
                 except:
                     self.logger.critical('********************************* "Failed:-->Sim 2 is not connected to VoWifi" ****************************************')
-                    print("Failed:-->Sim 2 is not connected to VoWifi")
+                    print("Failed:-->Sim 2 is not connected to VoWifi even after waiting for 2 min")
         except Exception:
-            self.logger.warn('********************************* SIM 2 is Not Available ****************************************')
+            self.logger.warning('********************************* SIM 2 is Not Available ****************************************')
             print("SIM 2 is Not Available")
         finally:
             for _ in range(3):
+                sleep(1)
                 self.driver.back()
 
     def test_repeatation(self,setup):
@@ -154,6 +148,7 @@ class Test_setting:
             self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,self.wifi_xp).click()
             sleep(2)
             self.obj.close_toggle_wait()
+            print("Waiting for 40 second")
             wait = WebDriverWait(self.driver, 50)
             try:
                 wait.until(Ec.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR,self.obj.wifi_connection)))
@@ -164,6 +159,7 @@ class Test_setting:
                 print("wifi is not connected")
             self.driver.back()
             self.test_verify_vowifi(setup)
+        self.driver.back()
 
 
 
