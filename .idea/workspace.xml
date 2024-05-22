@@ -6,6 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6191c16e-616e-4f70-94c0-1df79af4ae29" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScreenShot/Opertaor.png" beforeDir="false" afterPath="$PROJECT_DIR$/ScreenShot/Opertaor.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/automation.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/automation.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageObject/Long_msg_loctors.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObject/Long_msg_loctors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageObject/check_operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObject/check_operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_Long_Msg.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_Long_Msg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_operatorCheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_operatorCheck.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/common_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilities/common_function.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,18 +48,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Amitroshan1"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Amitroshan1&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Amitroshan1/Pytest_Appium.git",
-    "accountId": "f7222a83-8da8-4609-a4e8-d094f3182777"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Amitroshan1/Appium_Pytest.git&quot;,
+    &quot;accountId&quot;: &quot;f7222a83-8da8-4609-a4e8-d094f3182777&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>

@@ -15,6 +15,13 @@ class Long_msg:
     fourth_toggle = '(//android.widget.Switch[@resource-id="com.google.android.apps.messaging:id/switchWidget"])[4]'
     second_toggle='(//android.widget.Switch[@resource-id="com.google.android.apps.messaging:id/switchWidget"])[2]'
 
+    #two simcard
+    general_AND_UI='new UiSelector().text("General")'
+    sim1_AND_UI='new UiSelector().text("SIM1")'
+    sim2_And_UI='new UiSelector().text("SIM2")'
+    txtSim1_xp="//android.widget.EditText[@text='Text (SIM1)']"
+    RcsSim1_xp="//android.widget.EditText[@text='RCS (SIM1)']"
+
     msg_xpath='//android.widget.TextView[@text="Messages"]'
     start_chat_Xpath='//android.widget.Button[@content-desc="Start chat"]'
     Search_contact_xpath='//android.widget.EditText[@resource-id="ContactSearchField"]'
@@ -82,9 +89,17 @@ class Long_msg:
         sleep(2)
         self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,self.msg_setting_AND_UI).click()
         sleep(1)
-        self.driver.find_element(AppiumBy.XPATH,self.RCS_CHAT_xp).click()
-        sleep(2)
-        self.RCS_toggle()
+        try:
+            if self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,self.general_AND_UI).is_displayed():
+                self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.general_AND_UI).click()
+
+                self.driver.find_element(AppiumBy.XPATH,self.RCS_CHAT_xp).click()
+                sleep(2)
+                self.RCS_toggle()
+        except:
+            self.driver.find_element(AppiumBy.XPATH, self.RCS_CHAT_xp).click()
+            sleep(2)
+            self.RCS_toggle()
         wait=WebDriverWait(self.driver,120)
 
         try:
@@ -101,15 +116,39 @@ class Long_msg:
 
         self.com_obj.swipe_DOWN()
         sleep(2)
-        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,self.Advance_AND_UI).click()
-        sleep(1)
         try:
-            self.check_4_toggle()
+            if self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,self.Advance_AND_UI).is_displayed():
+                self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.Advance_AND_UI).click()
+                sleep(1)
+                try:
+                    self.check_4_toggle()
+                except:
+                    self.check_2_toggle()
         except:
-            self.check_2_toggle()
+
+            self.driver.back()
+            try:
+                if self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,self.sim1_AND_UI).is_displayed():
+                    self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.sim1_AND_UI).click()
+                    sleep(1)
+                    self.check_4_toggle()
+                    self.driver.back()
+                    sleep(1)
+                if self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.sim2_And_UI).is_displayed():
+                    self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.sim2_And_UI).click()
+                    sleep(1)
+                    self.check_4_toggle()
+                    self.driver.back()
+
+            except:
+                print("sim not present")
+                pass
+
+
+
         sleep(1)
         self.driver.back()
-        self.driver.back()
+
 
 
 
@@ -126,16 +165,46 @@ class Long_msg:
 
     def type_Msg(self,msg):
         try:
+            print("looking for RCS")
             if self.driver.find_element(AppiumBy.XPATH, self.RCS_area_xpath).is_displayed():
                 self.driver.find_element(AppiumBy.XPATH, self.RCS_area_xpath).send_keys(msg)
                 sleep(1)
+                self.driver.find_element(AppiumBy.XPATH, self.RCS_send_btn_xpath).click()
+                print("msg send")
         except:
-            self.driver.find_element(AppiumBy.XPATH, self.RCS_send_btn_xpath).click()
-            sleep(1)
+            print("looking for txt")
+            try:
+                if self.driver.find_element(AppiumBy.XPATH, self.txt_area_xp).is_displayed():
+                    self.driver.find_element(AppiumBy.XPATH, self.txt_area_xp).send_keys(msg)
+                    sleep(1)
+                    self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.txt_send_btn_AND_UI).click()
+            except:
+
+                try:
+                    print("looking for txt send button")
+                    self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.txt_send_btn_AND_UI).click()
+                    sleep(1)
+                except:
+                    print("looking for RCS send button")
+
+                    self.driver.find_element(AppiumBy.XPATH, self.RCS_send_btn_xpath).click()
+                    sleep(1)
+
+    def sim_type_Msg(self,msg):
+        try:
+            if self.driver.find_element(AppiumBy.XPATH,self.txtSim1_xp).is_displayed:
+                self.driver.find_element(AppiumBy.XPATH,self.txtSim1_xp).send_keys(msg)
+                sleep(1)
+                self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.txt_send_btn_AND_UI).click()
+
+        except:
+            try:
+                if self.driver.find_element(AppiumBy.XPATH,self.RcsSim1_xp).is_displayed():
+                    self.driver.find_element(AppiumBy.XPATH, self.RcsSim1_xp).send_keys(msg)
+                    sleep(1)
+                    self.driver.find_element(AppiumBy.XPATH, self.RCS_send_btn_xpath).click()
+            except:
+                pass
 
 
-
-    def send_Msg_Verify(self):
-        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,self.RCS_send_btn_xpath).click()
-        sleep(1)
 

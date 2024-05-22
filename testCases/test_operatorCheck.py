@@ -30,16 +30,19 @@ class Test_operatorManuallyCheck:
                 print("tap done")
 
         except:
-            print("came here why")
+
             pass
 
         try:
             print("checking Auto select")
-            if self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,self.optr.avail_network_AND_UI).is_displayed():
+            if self.driver.find_element(AppiumBy.XPATH,self.optr.Auto_select_Xpath).is_displayed():
                 self.com.close_toggle()
+                print('Toggle is OFF')
+                sleep(2)
                 self.optr.clickOnOFFbtn()
                 self.optr.clickOnOFFbtn()
-        except:
+                self.optr.CheckingOpertaor()
+        except Exception:
             print("Auto select is off")
             self.optr.CheckingOpertaor()
         self.driver.back()
@@ -54,23 +57,26 @@ class Test_operatorManuallyCheck:
                 self.optr.tap_On_Opertaor()
                 print("tap done")
 
+                try:
+                    print("checking Auto select in sim2")
+                    if self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
+                                                self.optr.avail_network_AND_UI).is_displayed():
+                        self.com.close_toggle()
+                        self.optr.clickOnOFFbtn()
+                        self.optr.clickOnOFFbtn()
+                except:
+                    print("Auto select is off 2nd Sim")
+                    self.optr.CheckingOpertaor()
+                self.driver.back()
+                self.driver.back()
+
+
         except:
 
             pass
+        self.driver.back()
+        self.driver.back()
 
-        try:
-            print("checking Auto select")
-            if self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.optr.avail_network_AND_UI).is_displayed():
-                self.com.close_toggle()
-                self.optr.clickOnOFFbtn()
-                self.optr.clickOnOFFbtn()
-        except:
-            print("Auto select is off")
-            self.optr.CheckingOpertaor()
-        self.driver.back()
-        self.driver.back()
-        self.driver.back()
-        self.driver.back()
 
 
 

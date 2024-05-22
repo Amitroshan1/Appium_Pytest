@@ -9,7 +9,7 @@ from utilities.common_function import Common_methods
 
 
 class Test_Long_Msg:
-    number="+918607727452"
+    number="+918910666837"
     repeat=3
 
     msg=("A well-organized paragraph supports or develops a single controlling idea,"
@@ -32,21 +32,30 @@ class Test_Long_Msg:
         self.driver=setup
         self.obj=Long_msg(self.driver)
         self.logger.info('********************************* test_msg ****************************************')
-        self.logger.info('*********************************  ****************************************')
+
         self.obj.open_Msg()
+        self.logger.info('********************************* opened Msg app****************************************')
         self.obj.test_RCS_ststus_delivery_report()
+        self.logger.info('********************************* RCS chat and Delirvery report ****************************************')
         sleep(1)
         self.obj.compose_msg()
+        self.logger.info('********************************* clicked on compose msg ****************************************')
         self.obj.enter_number(self.number)
+        self.logger.info('********************************* Number is entered ****************************************')
         wait=WebDriverWait(self.driver,60)
         cnt=0
         failed=0
         for i in range(self.repeat):
-
-            self.obj.type_Msg(self.msg)
+            try:
+                if self.driver.find_element(AppiumBy.XPATH, self.obj.txtSim1_xp).is_displayed:
+                    self.obj.sim_type_Msg(self.msg)
+            except:
+                try:
+                    if self.driver.find_element(AppiumBy.XPATH, self.obj.RcsSim1_xp).is_displayed():
+                        self.obj.sim_type_Msg(self.msg)
+                except:
+                    self.obj.type_Msg(self.msg)
             sleep(2)
-
-            self.obj.send_Msg_Verify()
             try:
                 wait.until(Ec.visibility_of_element_located((AppiumBy.XPATH,self.obj.double_click_xpath)))
                 cnt+=1
@@ -54,11 +63,12 @@ class Test_Long_Msg:
             except Exception:
                 failed+=1
                 print(f'Msg cannot be send {failed} times')
+                self.logger.info('********************************* test_msg  testcase completed  ** **************************************')
         self.driver.back()
         self.driver.back()
         self.driver.back()
 
-        print(f'Total msg--> {failed}')
+        print(f'Total msg Failed--> {failed}')
         print(f'total msg successfully send-->{cnt}')
 
     def test_short_msg(self,setup):
@@ -71,11 +81,17 @@ class Test_Long_Msg:
         cnt=0
         failed=0
         for i in range(self.repeat):
-
-            self.obj.type_Msg(self.shrt_msg)
+            try:
+                if self.driver.find_element(AppiumBy.XPATH, self.obj.txtSim1_xp).is_displayed:
+                    self.obj.sim_type_Msg(self.shrt_msg)
+            except:
+                try:
+                    if self.driver.find_element(AppiumBy.XPATH, self.obj.RcsSim1_xp).is_displayed():
+                        self.obj.sim_type_Msg(self.shrt_msg)
+                except:
+                    self.obj.type_Msg(self.shrt_msg)
             sleep(2)
 
-            self.obj.send_Msg_Verify()
             try:
                 wait.until(Ec.visibility_of_element_located((AppiumBy.XPATH, self.obj.double_click_xpath)))
                 cnt += 1
@@ -86,6 +102,6 @@ class Test_Long_Msg:
         self.driver.back()
         self.driver.back()
         self.driver.back()
-        print(f'Total msg--> {failed}')
+        print(f'Total msg Failed--> {failed}')
         print(f'total msg successfully send-->{cnt}')
 

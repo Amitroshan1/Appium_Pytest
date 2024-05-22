@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class CheckOperatorManually:
     off_btn_operator_AND_UI='new UiSelector().resourceId("android:id/button3")'
+    Auto_select_Xpath='//android.widget.TextView[@text="Auto-select"]'
     avail_network_AND_UI='new UiSelector().text("Available networks")'
     radio_btn_AND_UI='new UiSelector().resourceId("com.android.phone:id/coui_tail_mark").instance(0)'
     error_text_AND_UI='new UiSelector().resourceId("com.android.phone:id/alertTitle")'

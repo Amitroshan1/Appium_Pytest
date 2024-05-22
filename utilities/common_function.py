@@ -4,6 +4,7 @@ from time import sleep
 
 class Common_methods:
     toggle_xp = '//android.widget.Switch[@resource-id="android:id/switch_widget"]'
+    to='//android.widget.Switch[@resource-id="android:id/switch_widget"]'
     second_toggle = '(//android.widget.Switch[@resource-id="android:id/switch_widget"])[2]'
     third_toggle='(//android.widget.Switch[@resource-id="android:id/switch_widget"])[3]'
 
@@ -56,11 +57,11 @@ class Common_methods:
 
 
 
-    @staticmethod
+
     def swipe_DOWN(self):
         self.driver.swipe(998,2640,594,409)
         sleep(1)
-    @staticmethod
+
     def swipe_UP(self):
         self.driver.swipe(594,409,998,2640)
         sleep(1)
