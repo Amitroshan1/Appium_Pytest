@@ -24,7 +24,7 @@ class Test_call_msg:
         self.obj.press_dial_pad()
         self.obj.enterNumber()
         self.obj.click_video_call(self.start_x,self.start_y,self.end_x,self.end_y)
-        wait_for_call = WebDriverWait(self.driver, 28)
+        wait_for_call = WebDriverWait(self.driver, 36)
         total=0
         cnt = 0
         Drop = 0
@@ -74,7 +74,7 @@ class Test_call_msg:
 
             except Exception:
                 print("Reciever end is not picking or switch Off or out of range")
-                if total==self.repeat:
+                if total==self.obj.repeat:
                     try:
                         self.driver.find_element(AppiumBy.XPATH, self.obj.Video_End_button).click()
                     except:

@@ -9,7 +9,7 @@ from utilities.common_function import Common_methods
 
 
 class Test_Long_Msg:
-    number="+918910666837"
+    number="+919653184217"
     repeat=3
 
     msg=("A well-organized paragraph supports or develops a single controlling idea,"
@@ -57,7 +57,8 @@ class Test_Long_Msg:
                     self.obj.type_Msg(self.msg)
             sleep(2)
             try:
-                wait.until(Ec.visibility_of_element_located((AppiumBy.XPATH,self.obj.double_click_xpath)))
+                wait.until(Ec.any_of(Ec.visibility_of_element_located((AppiumBy.XPATH,self.obj.double_click_xpath)),
+                                     Ec.visibility_of_any_elements_located((AppiumBy.XPATH,self.obj.double_click2_xpath))))
                 cnt+=1
                 print(f'Long msg has been send {cnt} times')
             except Exception:
@@ -93,7 +94,8 @@ class Test_Long_Msg:
             sleep(2)
 
             try:
-                wait.until(Ec.visibility_of_element_located((AppiumBy.XPATH, self.obj.double_click_xpath)))
+                wait.until(Ec.any_of(Ec.visibility_of_element_located((AppiumBy.XPATH, self.obj.double_click_xpath)),
+                                     Ec.visibility_of_any_elements_located((AppiumBy.XPATH, self.obj.double_click2_xpath))))
                 cnt += 1
                 print(f'Short msg has been send {cnt} times')
             except Exception:

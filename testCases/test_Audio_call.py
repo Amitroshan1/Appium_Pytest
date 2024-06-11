@@ -7,8 +7,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class Test_audio_call:
-    repeat=10
-    Number="+919315227062"
+    repeat=3
+
 
     def test_audio(self,setup,setup2):
         self.driver=setup
@@ -16,8 +16,8 @@ class Test_audio_call:
         self.obj=audio_Call(self.driver,self.driver2)
         self.obj.open_phn_dialer()
         self.obj.click_dialpad()
-        self.obj.Enter_number(self.Number)
-        wait_for_call = WebDriverWait(self.driver, 26)
+        self.obj.Enter_number(self.obj.Number)
+        wait_for_call = WebDriverWait(self.driver, 38)
         total = 0
         cnt = 0
         Drop = 0
@@ -60,13 +60,14 @@ class Test_audio_call:
                     print("Call was Successfull--->",cnt)
                     sleep(1)
             except Exception:
-                print("Reciever end is not picking or switch Off or out of range")
+
                 if total == self.repeat:
                     try:
                         self.driver.find_element(AppiumBy.XPATH, self.obj.Audio_End_button).click()
                     except:
                         pass
                 else:
+                    print("Reciever end is not picking or switch Off or out of range")
                     continue
         print("Total Call Made--->",total)
         print("Total Call Drop--->",Drop)

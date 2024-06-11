@@ -31,10 +31,12 @@ class Long_msg:
     RCS_CHAT_xp='//android.widget.TextView[@text="RCS chats"]'
     RCS_area_xpath="//android.widget.EditText[@text='RCS message']"
     RCS_send_btn_xpath='//android.widget.ImageView[@content-desc="Send end-to-end encrypted message"]'
+    RCS_send2_xpath='//android.view.View[@resource-id="Compose:Draft:Send"]/android.widget.Button'
     RCS_toggle_AND_UI='new UiSelector().resourceId("com.google.android.apps.messaging:id/switchWidget").instance(0)'
     RCS_Status_xp='//android.widget.TextView[@text="Status: Connected"]'
 
     double_click_xpath='//android.widget.ImageView[@resource-id="com.google.android.apps.messaging:id/status_icon"]'
+    double_click2_xpath='//android.view.View[@resource-id="message_list"]/android.view.View[1]/android.view.View[2]'
 
     txt_area_xp="//android.widget.EditText[@text='Text message']"
     txt_send_btn_AND_UI='new UiSelector().description("Send SMS")'
@@ -122,8 +124,10 @@ class Long_msg:
                 sleep(1)
                 try:
                     self.check_4_toggle()
+                    self.driver.back()
                 except:
                     self.check_2_toggle()
+                    self.driver.back()
         except:
 
             self.driver.back()
@@ -165,14 +169,14 @@ class Long_msg:
 
     def type_Msg(self,msg):
         try:
-            print("looking for RCS")
+            #print("looking for RCS")
             if self.driver.find_element(AppiumBy.XPATH, self.RCS_area_xpath).is_displayed():
                 self.driver.find_element(AppiumBy.XPATH, self.RCS_area_xpath).send_keys(msg)
                 sleep(1)
                 self.driver.find_element(AppiumBy.XPATH, self.RCS_send_btn_xpath).click()
                 print("msg send")
         except:
-            print("looking for txt")
+            #print("looking for txt")
             try:
                 if self.driver.find_element(AppiumBy.XPATH, self.txt_area_xp).is_displayed():
                     self.driver.find_element(AppiumBy.XPATH, self.txt_area_xp).send_keys(msg)
@@ -181,14 +185,16 @@ class Long_msg:
             except:
 
                 try:
-                    print("looking for txt send button")
+                    #print("looking for txt send button")
                     self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, self.txt_send_btn_AND_UI).click()
                     sleep(1)
                 except:
-                    print("looking for RCS send button")
-
-                    self.driver.find_element(AppiumBy.XPATH, self.RCS_send_btn_xpath).click()
-                    sleep(1)
+                    #print("looking for RCS send button")
+                    try:
+                        self.driver.find_element(AppiumBy.XPATH, self.RCS_send_btn_xpath).click()
+                        sleep(1)
+                    except:
+                        self.driver.find_element(AppiumBy.XPATH,self.RCS_send2_xpath).click()
 
     def sim_type_Msg(self,msg):
         try:

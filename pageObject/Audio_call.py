@@ -2,7 +2,10 @@ from appium.webdriver.common.appiumby import AppiumBy
 from time import sleep
 
 class audio_Call:
-    phn_dialer_xpath = '//android.widget.TextView[@content-desc="Phone"]'
+    Number = "+919702736871"
+
+
+    phn_dialer_AND_UI = 'new UiSelector().text("Phone")'
     recent_btn_xpath = '//android.view.View[@resource-id="com.google.android.dialer:id/navigation_bar_item_active_indicator_view"]'
     keypad_xpath = '//android.widget.ImageButton[@content-desc="key pad"]'
     textarea_num_xpath = '//android.widget.EditText[@resource-id="com.google.android.dialer:id/digits"]'
@@ -19,7 +22,7 @@ class audio_Call:
 
 
     def open_phn_dialer(self):
-        self.driver.find_element(AppiumBy.XPATH,self.phn_dialer_xpath).click()
+        self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,self.phn_dialer_AND_UI).click()
         sleep(1)
         self.driver.find_element(AppiumBy.XPATH, self.recent_btn_xpath).click()
         sleep(1)

@@ -42,7 +42,7 @@ class CheckOperatorManually:
             sleep(2)
             self.driver.save_screenshot('.//ScreenShot//Opertaor.png')
 
-            for n in range(1, 8):
+            for n in range(1, 10 ):
                 self.element=f'(//android.widget.CheckBox[@resource-id="com.android.phone:id/coui_tail_mark"])[{n}]'
 
 

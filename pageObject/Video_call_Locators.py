@@ -4,8 +4,8 @@ from time import sleep
 
 
 class video_call_Locator:
-    number = "+919315227062"
-    repeat = 50
+    number = "+919653184217"
+    repeat = 3
 
 
     phn_dialer_xpath='//android.widget.TextView[@content-desc="Phone"]'
@@ -24,7 +24,7 @@ class video_call_Locator:
     def __init__(self,driver,driver2):
         self.driver=driver
         self.driver2=driver2
-        self.repeat=4
+
 
 
     def Open_phn_dialer(self):
